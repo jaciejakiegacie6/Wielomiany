@@ -1,0 +1,67 @@
+import math
+
+def calculate_extremes():
+    
+    try:
+        # 1. Pobieranie współczynników
+        a = float(input("Podaj współczynnik a (przy x³): "))
+        b = float(input("Podaj współczynnik b (przy x²): "))
+        c = float(input("Podaj współczynnik c (przy x¹): "))
+        d = float(input("Podaj współczynnik d (wyraz wolny): "))
+    except ValueError:
+        print("BŁĄD: Wprowadź poprawne liczby.")
+        return
+
+    
+    if a == 0:
+        print("Współczynnik 'a' nie może być zerem (to nie jest wielomian 3. stopnia).")
+        return
+
+    delta = 4 * b**2 - 12 * a * c
+    
+    if delta < 0:
+        print("Brak ekstremów , ponieważ delta pochodnej jest ujemna (pochodna nie ma miejsc zerowych).")
+        return
+
+    
+    
+    def w(x):
+        
+        return a * x**3 + b * x**2 + c * x + d
+
+    if delta == 0:
+        
+        x1 = (-2 * b) / (2 * 3 * a)
+        extremum_val = w(x1)
+        
+
+        
+    else:
+        
+        
+        
+        x1 = (-2 * b - math.sqrt(delta)) / (6 * a)
+        x2 = (-2 * b + math.sqrt(delta)) / (6 * a)
+        
+        w_x1 = w(x1)
+        w_x2 = w(x2)
+        
+        
+        print(f" Wartość ekstremum w1 ≈ {w_x1:.3f}")
+        print(f" Wartość ekstremum w2 ≈ {w_x2:.3f}")
+        
+        
+        if a > 0:
+            
+            min_val = min(w_x1, w_x2)
+            max_val = max(w_x1, w_x2)
+        else:
+            #
+            min_val = min(w_x1, w_x2)
+            max_val = max(w_x1, w_x2)
+            
+        print(f"\n Maksimum lokalne ≈ {max_val:.3f}")
+        print(f" Minimum lokalne ≈ {min_val:.3f}")
+
+
+calculate_extremes()
