@@ -15,12 +15,9 @@ def maximal_operations(n):
     
     return maximal_mult, maximal_add
 
-
-while True:
     
-        n_input = input("Wprowadź stopień wielomianu n: ")
-        n_stopien = int(n_input)
-        break
+n_input = input("Wprowadź stopień wielomianu n: ")
+n_stopien = int(n_input)
 
 
 mult_min, add_min = minimal_operations(n_stopien)
