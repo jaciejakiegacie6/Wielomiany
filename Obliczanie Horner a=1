@@ -1,0 +1,13 @@
+def horner_sum_of_powers(n, x):
+    if n < 0:
+        return 0
+    result = 1  
+    for _ in range(n):
+        result = result * x  
+        result = result + 1  
+    return result
+X = 2 
+N_input = input("Wprowadź stopień wielomianu n: ")
+N = int(N_input)
+wartosc = horner_sum_of_powers(N, X)
+print(f"Wartość w({X}) = {wartosc}")  
