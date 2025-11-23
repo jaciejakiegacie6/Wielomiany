@@ -1,0 +1,51 @@
+import random
+
+def horner_remainder(A, a):
+    if not A:
+        return 0
+
+    result = A[-1] # Startujemy od a_n
+
+    # Pętla Hornera
+    for i in range(len(A) - 2, -1, -1):
+        result = result * a
+        result = result + A[i]
+        
+    return result
+
+def get_polynomial_string(A):
+    N = len(A) - 1
+    terms = []
+    
+    #
+    for i in range(N, -1, -1):
+        coeff = A[i]
+        
+        if coeff == 0 and i != 0:
+            continue
+            
+        term_str = ""
+        
+        
+        if i != N:
+            term_str += f" {'+' if coeff >= 0 else '-'} "
+            coeff = abs(coeff)
+        
+        if i == 0:
+            term_str += str(coeff)
+        elif i == 1:
+            term_str += f"{coeff}x" if coeff != 1 or i == N else "x"
+        else:
+            term_str += f"{coeff}x^{i}" if coeff != 1 or i == N else f"x^{i}"
+        
+        terms.append(term_str)
+            
+    return "".join(terms).lstrip(" + ")
+N = random.randint(2, 5) 
+A = [random.randint(-5, 5) for _ in range(N + 1)] 
+X_ignored = random.randint(-2, 2) 
+A_val_input = input("Wprowadź wartość 'a' (dla dzielnika x - a): ")
+A_val = int(A_val_input)
+remainder = horner_remainder(A, A_val)
+polynomial_str = get_polynomial_string(A)
+print(f"\nWYNIK = {remainder}")
