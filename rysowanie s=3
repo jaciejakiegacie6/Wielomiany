@@ -1,0 +1,19 @@
+import matplotlib.pyplot as plt
+
+def plot_poly():
+    def w(x):
+        return x**3 - x - 2
+
+    X = []
+    Y = []
+    for i in range(-100, 100):
+        x_val = i / 50.0
+        X.append(x_val)
+        Y.append(w(x_val))
+
+    plt.plot(X, Y)
+    plt.title("$w(x) = x^3 - x - 2$")
+    plt.grid(True)
+    plt.show()
+
+plot_poly()
