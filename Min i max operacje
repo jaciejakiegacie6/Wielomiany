@@ -1,0 +1,35 @@
+def minimal_operations(n):
+    if n < 0:
+        return 0, 0
+    
+    return n, n
+
+def maximal_operations(n):
+    if n < 0:
+        return 0, 0
+    
+    
+    maximal_mult = (n * n + 3 * n) // 2 
+    
+    maximal_add = n
+    
+    return maximal_mult, maximal_add
+
+
+while True:
+    
+        n_input = input("Wprowadź stopień wielomianu n: ")
+        n_stopien = int(n_input)
+        break
+
+
+mult_min, add_min = minimal_operations(n_stopien)
+print("\n Najmniejsza Liczba Operacji")
+print(f"Mnożenia: {mult_min}")
+print(f"Dodawania: {add_min}")
+
+
+mult_max, add_max = maximal_operations(n_stopien)
+print("\n Największa Liczba Operacji")
+print(f"Mnożenia: {mult_max}")
+print(f"Dodawania: {add_max}")
