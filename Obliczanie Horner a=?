@@ -1,0 +1,15 @@
+def horner_general(A, x):
+    n = len(A) - 1
+    if n < 0:
+        return 0
+    result = A[n]
+    for i in range(n - 1, -1, -1):
+        result = result * x 
+        result = result + A[i]
+        
+    return result
+X = 2 
+A_input = input("Wprowadź współczynniki [a_0, a_1, ..., a_n] (oddzielone przecinkami): ")
+A = [int(s.strip()) for s in A_input.split(',')]
+wartosc = horner_general(A, X)
+print(f"Wartość w({X}) = {wartosc}")
